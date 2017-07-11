@@ -4,6 +4,7 @@ class Chef < ApplicationRecord
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, length: {maximum: 200},
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
+    has_many :recipes
     before_save :downcase_fields
 
     def downcase_fields
