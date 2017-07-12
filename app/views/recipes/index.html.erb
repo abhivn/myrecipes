@@ -1,11 +1,9 @@
-<h1 align="center">Listing all Recipes</h1>
-<hr>
-
+<%= render 'shared/page_title', title: "showing all Recipes" %>
 <% @recipes.each do |recipe| %>
 <div class="row">
   <div class="col-md-2">
-    <section class="center">
-
+    <section class="chef-info center">
+      <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
     </section>
   </div>
   <div class="col-md-8 well">

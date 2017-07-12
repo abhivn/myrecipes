@@ -1,2 +1,21 @@
-<h1>Show Page</h1>
-<h4><%= @recipe.inspect %></h4>
+<%= render 'shared/page_title', title: @recipe.name %>
+<div class="well col-md-8 col-md-offset-2">
+  <h4 class="center description"><strong>Description: </strong></h4>
+  <hr>
+  <%= simple_format(@recipe.description) %>
+  <hr>
+  <div class="pull-right">
+    <p class="center">
+      <em>Created By:</em>
+    </p>
+    <p class="center">
+      <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
+    </p>
+    <p class="center">
+      <small><%= @recipe.chef.chefname %></small>
+      <div class="pull-right">Created <%= time_ago_in_words(@recipe.created_at)%> ago</div>
+    </p>
+
+  </div>
+
+</div>
