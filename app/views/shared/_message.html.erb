@@ -1,7 +1,17 @@
 <% if flash.any? %>
 <ul>
-  <% flash.each do |name, msg| %>
-  <li><%= msg %></li>
-  <% end %>
+
 </ul>
 <% end %>
+
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name %>">
+      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+      <%= msg %>
+    </div>
+    <% end %>
+  </div>
+
+</div>
