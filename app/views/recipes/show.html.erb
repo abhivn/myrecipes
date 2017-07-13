@@ -4,6 +4,12 @@
   <hr>
   <%= simple_format(@recipe.description) %>
   <hr>
+  <div class="pull-left show-actions">
+    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+    <%= link_to "Delete", recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure to delete?'}, class: "btn btn-danger" %>
+    <%= link_to "Back", recipes_path, class: "btn btn-primary" %>
+
+  </div>
   <div class="pull-right">
     <p class="center">
       <em>Created By:</em>
