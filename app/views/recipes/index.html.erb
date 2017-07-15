@@ -1,15 +1,2 @@
 <%= render 'shared/page_title', title: "showing all Recipes" %>
-<% @recipes.each do |recipe| %>
-<div class="row">
-  <div class="col-md-2">
-    <section class="chef-info center">
-      <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
-    </section>
-  </div>
-  <div class="col-md-8 well">
-  <h4><%= link_to recipe.name, recipe_path(recipe)%></h4>
-  <p><%= truncate(recipe.description, length: 150, omission: "...") %></p>
-  <p><small>created <%= time_ago_in_words(recipe.created_at) %> ago</small></p>
-  </div>
-</div>
-<% end %>
+<%= render 'recipe', obj: @recipes %>
