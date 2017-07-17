@@ -16,6 +16,7 @@ class ChefsController < ApplicationController
 
   def show
     @chef = Chef.find(params[:id])
+    @chef_recipes = @chef.recipes.paginate(page: params[:page], per_page: 3)
   end
 
   def edit
@@ -30,6 +31,10 @@ class ChefsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def index
+    @chefs = Chef.paginate(page: params[:page], per_page: 3)
   end
 
   private

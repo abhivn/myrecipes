@@ -1,1 +1,21 @@
-<%= render 'shared/page_title', title: "Chef Listing" %>
+<%= render 'shared/page_title', title: "Show all Chefs" %>
+<div align="center">
+  <%= will_paginate @chefs %>
+  <%= @chefs.each do |chef| %>
+  <div class="row">
+    <div class="col-md-2">
+      <section class="chef-info center">
+        <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
+      </section>
+    </div>
+    <div class="col-md-6 well center">
+    <h4><%= link_to chef.chefname.capitalize, chef_path(chef), class:"chef-title"%></h4>
+    <p><%= chef.email%></p>
+    <p><small><%= pluralize(chef.recipes.count, "recipe") %></small></p>
+    </div>
+  </div>
+  <% end %>
+</div>
+<div align="center">
+  <%= will_paginate @chefs %>
+</div>
