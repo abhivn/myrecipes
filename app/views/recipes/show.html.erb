@@ -4,9 +4,11 @@
   <hr>
   <%= simple_format(@recipe.description) %>
   <hr>
+  <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin?)%>
   <div class="pull-left show-actions">
     <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
     <%= link_to "Delete", recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure to delete?'}, class: "btn btn-danger" %>
+    <% end %>
     <%= link_to "Back", recipes_path, class: "btn btn-primary" %>
 
   </div>
@@ -21,7 +23,5 @@
       <small><%= @recipe.chef.chefname %></small>
       <div class="pull-right">Created <%= time_ago_in_words(@recipe.created_at)%> ago</div>
     </p>
-
   </div>
-
 </div>
