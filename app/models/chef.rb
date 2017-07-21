@@ -7,6 +7,7 @@ class Chef < ApplicationRecord
     format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     validates :password, presence: true, length: {minimum: 5}, allow_nil: true
     has_many :recipes, dependent: :destroy
+    has_many :comments, dependent: :destroy
     default_scope -> {order(updated_at: :desc)}
     before_save :downcase_fields
 
