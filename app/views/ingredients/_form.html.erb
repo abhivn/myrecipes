@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@ingredient, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+      <%= render "shared/errors", obj: @ingredient%>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+        <div class="form-group">
+          <%= f.submit(@ingredient.new_record? ? "Add Ingredient" : "Update Ingredient", class: "btn btn-primary") %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-4 col-md-offset-4 color-match">
+    [ <%= link_to "Cancel request and return to ingredient listing", ingredients_path %> ]
+  </div>
+</div>

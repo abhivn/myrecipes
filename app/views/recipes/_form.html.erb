@@ -11,6 +11,15 @@
       <%= f.text_area :description, rows: 10, class: "form-control" %>
     </div>
     <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name do |cb| %>
+          <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
       <%= f.submit "Save", class: "btn btn-lg btn-primary btn-xlarge" %>
     </div>
     <% end %>

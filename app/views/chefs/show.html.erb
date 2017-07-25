@@ -5,9 +5,12 @@
     <%= image_tag "gravatar.jpg", width: 150, height: 150, id: "show-img"%>
   </div>
 </div>
-
+<% if @chef_recipes.count != 0 %>
 <h4 align="center"><%= @chef.chefname %>'s recipes'</h4>
 <div align="center">
 <%= will_paginate @chef_recipes %>
 </div>
 <%= render 'recipes/recipe', obj: @chef_recipes %>
+<% else %>
+<h4 align="center">No recipe yet</h4>
+<% end %>

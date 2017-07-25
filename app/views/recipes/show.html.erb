@@ -4,20 +4,26 @@
   <hr>
   <%= simple_format(@recipe.description) %>
   <hr>
+  <% if @recipe.ingredients.any? %>
+  <p><strong>Ingredients:</strong>
+  <% @recipe.ingredients.each do |ing| %>
+  <span class="badge"><%= link_to ing.name, ingredient_path(ing)%></span>
+  <% end %>
+</p>
+  <% end %>
   <% if logged_in? && (current_chef == @recipe.chef || current_chef.admin?)%>
   <div class="pull-left show-actions">
     <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
     <%= link_to "Delete", recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure to delete?'}, class: "btn btn-danger" %>
     <% end %>
     <%= link_to "Back", recipes_path, class: "btn btn-primary" %>
-
   </div>
   <div class="pull-right">
     <p class="center">
       <em>Created By:</em>
     </p>
     <p class="center">
-      <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
+       <%= link_to image_tag("gravatar.jpg", width: 100, height: 100, id: "show-img"), chef_path(@recipe.chef)%>
     </p>
     <p class="center">
       <small><%= @recipe.chef.chefname %></small>
