@@ -1,7 +1,7 @@
 class ChefsController < ApplicationController
 
   before_action :set_chef, only: [:show, :edit, :update, :destroy]
-  before_action :require_user, except: [:index, :show]
+  before_action :require_user, except: [:index, :show, :new, :create]
   before_action :require_same_user, except: [:index, :show]
   before_action :require_admin, only: [:destroy]
   def new
