@@ -10,15 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721132942) do
+ActiveRecord::Schema.define(version: 20170726124040) do
 
   create_table "chefs", force: :cascade do |t|
     t.string   "chefname"
     t.string   "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "password_digest"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",              default: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "comments", force: :cascade do |t|

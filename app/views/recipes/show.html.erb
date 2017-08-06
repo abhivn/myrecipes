@@ -23,7 +23,8 @@
       <em>Created By:</em>
     </p>
     <p class="center">
-       <%= link_to image_tag("gravatar.jpg", width: 100, height: 100, id: "show-img"), chef_path(@recipe.chef)%>
+       <!-- <%= link_to image_tag("gravatar.jpg", width: 100, height: 100, id: "show-img"), chef_path(@recipe.chef)%> -->
+       <%= link_to image_tag(@recipe.chef.image.url(:thumb), id: "show-img"), chef_path(@recipe.chef) %>
     </p>
     <p class="center">
       <small><%= @recipe.chef.chefname %></small>
@@ -37,7 +38,7 @@
     <div class="col-md-8 col-md-offset-2">
       <h3>Comments: </h3>
       <hr>
-      <%= form_for([@recipe, @comment], :html => {class: "form-horizontal", role: "form"})  do |f| %>
+      <%= form_for([@recipe, @comment], remote: true, :html => {class: "form-horizontal", role: "form"})  do |f| %>
       <div class="form-group">
         <%= f.label :description, "Comment" %>
         <%= f.text_area :description, rows: 8, class: "form-control", placeholder: "Enter comment here" %>
@@ -55,8 +56,8 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <h3>Prior Comments:</h3>
-    <div class="messages">
-      <%= render partial: 'comments/comments', object: @comments %>
+    <div id="messages">
+        <%= render partial: 'comments/comments', object: @comments %>
     </div>
   </div>
 

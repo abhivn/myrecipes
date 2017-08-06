@@ -7,4 +7,10 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   default_scope -> {order(updated_at: :desc)}
   has_many :comments, dependent: :destroy
+
+  def self.search(search)
+    if search
+      where(["name LIKE ?", "%#{search}%"])
+    end
+  end
 end

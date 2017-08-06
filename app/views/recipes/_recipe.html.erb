@@ -2,7 +2,8 @@
 <div class="row">
   <div class="col-md-2">
     <section class="chef-info center">
-      <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%>
+      <!-- <%= image_tag "gravatar.jpg", width: 100, height: 100, id: "show-img"%> -->
+      <%= image_tag recipe.chef.image.url(:thumb), id: "show-img"%>
     </section>
   </div>
   <div class="col-md-8 well">

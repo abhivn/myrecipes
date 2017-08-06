@@ -1,7 +1,7 @@
 <%= render "shared/errors", obj: @chef %>
 <div class="row">
   <div class="col-md-12">
-    <%= form_for(@chef, :html => {class: "form-horizontal", role: "form"})  do |f| %>
+    <%= form_for(@chef, :html => {class: "form-horizontal", role: "form", multipart: true})  do |f| %>
     <div class="form-group">
       <%= f.label :chefname, "Name" %>
       <%= f.text_field :chefname, class: "form-control" %>
@@ -18,6 +18,12 @@
       <%= f.label :password_confirmation, "Confirm Password"%>
       <%= f.password_field :password_confirmation,class: "form-control" %>
     </div>
+    <% if !@chef.new_record? %>
+    <div class="form-group">
+      <%= f.label :image, "Profile image" %>
+      <%= f.file_field :image %>
+    </div>
+    <% end %>
     <div class="form-group">
       <%= f.submit(@chef.new_record? ? "Create account" : "Update account",class: "btn btn-lg btn-primary btn-xlarge") %>
     </div>
