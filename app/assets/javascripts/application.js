@@ -15,3 +15,20 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+
+function scrollToBottom(){
+  if($('#messages').length > 0) {
+    $('#messages').scrollTop($('#messages')[0].scrollHeight);
+  }
+}
+
+$(document).ready(function() {
+  scrollToBottom();
+});
+
+
+$(document).on('turbolinks:load', function() {
+
+  scrollToBottom()
+});

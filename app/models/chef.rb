@@ -8,6 +8,7 @@ class Chef < ApplicationRecord
     validates :password, presence: true, length: {minimum: 5}, allow_nil: true
     has_many :recipes, dependent: :destroy
     has_many :comments, dependent: :destroy
+    has_many :messages, dependent: :destroy
     has_attached_file :image, styles: { large: "600x600>", medium: "200x200>", thumb: "150x150#" }, default_url: ActionController::Base.helpers.asset_path('missing.png')
     validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
